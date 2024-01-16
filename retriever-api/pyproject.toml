@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "retriever-api"
+version = "0.1.0"
+description = ""
+authors = ["wararaki"]
+readme = "README.md"
+packages = [{include = "api"}]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+fastapi = "^0.109.0"
+uvicorn = "^0.26.0"
+transformers = "^4.36.2"
+torch = "^2.1.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

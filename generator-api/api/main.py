@@ -14,6 +14,6 @@ def ping() -> str:
     return "pong"
 
 
-@app.post("/chat", response_model=Answer)
+@app.post("/generate", response_model=Answer)
 def chat(question: Question) -> Answer:
     return service.generate(question)
