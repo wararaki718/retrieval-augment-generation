@@ -1,7 +1,7 @@
-from generator import TextGenerator
-from preprocessor import TextPreprocessor
-from schema.request import Question
-from schema.response import Answer
+from .generator import TextGenerator
+from .preprocessor import TextPreprocessor
+from .schema.request import Question
+from .schema.response import Answer
 
 
 class LLMService:

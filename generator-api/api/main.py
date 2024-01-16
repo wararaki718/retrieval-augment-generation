@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 
-from schema.request import Question
-from schema.response import Answer
-from service import LLMService
+from .schema.request import Question
+from .schema.response import Answer
+from .service import LLMService
 
 
 app = FastAPI()

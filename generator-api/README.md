@@ -1,15 +1,9 @@
 # llm chat api
 
-## setup
-
-```shell
-pip install fastapi uvicorn transformers
-```
-
 ## run
 
 ```shell
-uvicorn main:app
+uvicorn api.main:app
 ```
 
 open http://localhost:8000/docs on your browser.
