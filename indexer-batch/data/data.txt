@@ -1,0 +1,4 @@
+The capital of India is Delhi.
+The capital of Japan is Tokyo.
+The capital of China is Beijin.
+The capital of Vietnam is Hanoi.

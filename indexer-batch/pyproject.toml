@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "batch"
+version = "0.1.0"
+description = ""
+authors = ["wararaki"]
+readme = "README.md"
+packages = [{include = "batch"}]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+transformers = "^4.36.2"
+opensearch-py = "^2.4.2"
+torch = "^2.1.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.poetry.scripts]
+batch-index-runner = "batch.main:batch"
