@@ -18,6 +18,6 @@ sample question
 
 ```json
 {
-  "text": "Where is the capital of Japan?"
+  "content": "Where is the capital of Japan?"
 }
 ```
