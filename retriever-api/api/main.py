@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 
 from .schema.request import Text
-from .schema.response import Vector
+from .schema.response import Answer
 from .service import RetrieveService
 
 
@@ -9,7 +9,7 @@ app = FastAPI()
 service = RetrieveService()
 
 
-@app.post("/vectorize", response_model=Vector)
-def vectorize(request: Text) -> Vector:
-    values = service.retrieve(request)
-    return Vector(values=values)
+@app.post("/vectorize", response_model=Answer)
+def vectorize(request: Text) -> Answer:
+    texts = service.retrieve(request)
+    return Answer(texts=texts)
