@@ -9,7 +9,7 @@ app = FastAPI()
 service = RetrieveService()
 
 
-@app.post("/vectorize", response_model=Answer)
-def vectorize(request: Text) -> Answer:
+@app.post("/retrieve", response_model=Answer)
+def retrieve(request: Text) -> Answer:
     texts = service.retrieve(request)
     return Answer(texts=texts)

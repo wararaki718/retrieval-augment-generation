@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "generator-api"
+name = "rag-api"
 version = "0.1.0"
 description = ""
 authors = ["wararaki"]
@@ -10,8 +10,7 @@ packages = [{include = "api"}]
 python = "^3.8"
 fastapi = "^0.109.0"
 uvicorn = "^0.26.0"
-transformers = "^4.36.2"
-torch = "^2.1.2"
+requests = "^2.31.0"
 
 
 [build-system]
