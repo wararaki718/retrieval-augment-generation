@@ -23,6 +23,42 @@ services:
       - "DISABLE_SECURITY_DASHBOARDS_PLUGIN=true"
     networks:
       - opensearch-net
+  generator-api:
+    image: rag-generator-api:latest
+    build:
+      context: .
+      dockerfile: ./generator-api/Dockerfile
+    ports:
+      - 8000:8000
+    networks:
+      - opensearch-net
+  retriever-api:
+    image: rag-retriever-api:latest
+    build:
+      context: .
+      dockerfile: ./retriever-api/Dockerfile
+    ports:
+      - 4000:4000
+    networks:
+      - opensearch-net
+  rag-api:
+    image: rag-core-api:latest
+    build:
+      context: .
+      dockerfile: ./rag-api/Dockerfile
+    ports:
+      - 9000:9000
+    networks:
+      - opensearch-net
+  indexer-batch:
+    image: rag-indexer-batch:latest
+    build:
+      context: .
+      dockerfile: ./indexer-batch/Dockerfile
+    networks:
+      - opensearch-net
+    depends_on:
+      - opensearch
 
 networks:
   opensearch-net:

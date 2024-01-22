@@ -9,7 +9,8 @@ from .vectorizer import DenseVectorizer
 
 
 def batch() -> None:
-    host = "localhost"
+    host = "opensearch"
+    # host = "localhost"
     port = 9200
     index_name = "rag-index"
 

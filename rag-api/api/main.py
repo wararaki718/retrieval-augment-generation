@@ -4,10 +4,11 @@ from .schema.request import RAGQuestion
 from .schema.response import RAGAnswer
 from .service import RAGService
 
+
 app = FastAPI()
 service = RAGService(
-    "http://localhost:7000/retrieve",
-    "http://localhost:8000/generate",
+    "http://retreiver-api:4000/retrieve",
+    "http://generator-api:8000/generate",
 )
 
 @app.get("/ping")

@@ -6,7 +6,7 @@ from .service import RetrieveService
 
 
 app = FastAPI()
-service = RetrieveService()
+service = RetrieveService(host="opensearch")
 
 
 @app.post("/retrieve", response_model=Answer)
