@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI
 
 from .schema.request import Text
@@ -6,7 +7,11 @@ from .service import RetrieveService
 
 
 app = FastAPI()
-service = RetrieveService(host="opensearch")
+service = RetrieveService(
+    host=os.getenv("OPENSEARCH_HOST", default="localhost"),
+    port=int(os.getenv("OPENSEARCH_PORT", default="9200")),
+    index_name=os.getenv("OPENSEARCH_INDEX", default="rag-index"),
+)
 
 
 @app.post("/retrieve", response_model=Answer)

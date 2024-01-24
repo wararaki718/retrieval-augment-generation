@@ -1,3 +1,5 @@
+import os
+
 from fastapi import FastAPI
 
 from .schema.request import RAGQuestion
@@ -7,8 +9,8 @@ from .service import RAGService
 
 app = FastAPI()
 service = RAGService(
-    "http://retreiver-api:4000/retrieve",
-    "http://generator-api:8000/generate",
+    os.getenv("RETRIEVER_URL", default="http://retriever-api:4000/retrieve"),
+    os.getenv("GENERATOR_URL", default="http://generator-api:8000/generate"),
 )
 
 @app.get("/ping")

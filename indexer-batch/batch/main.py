@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 from time import sleep
 
@@ -9,10 +10,9 @@ from .vectorizer import DenseVectorizer
 
 
 def batch() -> None:
-    host = "opensearch"
-    # host = "localhost"
-    port = 9200
-    index_name = "rag-index"
+    host = os.getenv("OPENSEARCH_HOST", default="localhost")
+    port = int(os.getenv("OPENSEARCH_PORT", default="9200"))
+    index_name = os.getenv("OPENSEARCH_INDEX", default="rag-index")
 
     client = OpenSearch(hosts=[{"host": host, "port": port}])
     index_body = IndexLoader.load(Path("./data/index.json"))

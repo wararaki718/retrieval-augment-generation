@@ -25,6 +25,7 @@ services:
       - opensearch-net
   generator-api:
     image: rag-generator-api:latest
+    container_name: generator-api
     build:
       context: .
       dockerfile: ./generator-api/Dockerfile
@@ -34,31 +35,31 @@ services:
       - opensearch-net
   retriever-api:
     image: rag-retriever-api:latest
+    container_name: retriever-api
     build:
       context: .
       dockerfile: ./retriever-api/Dockerfile
+    environment:
+      - OPENSEARCH_HOST=opensearch
+      - OPENSEARCH_PORT=9200
+      - OPENSEARCH_INDEX=rag-index
     ports:
       - 4000:4000
     networks:
       - opensearch-net
   rag-api:
     image: rag-core-api:latest
+    container_name: rag-api
     build:
       context: .
       dockerfile: ./rag-api/Dockerfile
+    environment:
+      - RETRIEVER_URL=http://retriever-api:4000/retrieve
+      - GENERATOR_URL=http://generator-api:8000/generate
     ports:
       - 9000:9000
     networks:
       - opensearch-net
-  indexer-batch:
-    image: rag-indexer-batch:latest
-    build:
-      context: .
-      dockerfile: ./indexer-batch/Dockerfile
-    networks:
-      - opensearch-net
-    depends_on:
-      - opensearch
 
 networks:
   opensearch-net:

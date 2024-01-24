@@ -1,0 +1,17 @@
+version: "3"
+services:
+  indexer-batch:
+    image: rag-indexer-batch:latest
+    container_name: indexer-batch
+    build:
+      context: .
+      dockerfile: ./indexer-batch/Dockerfile
+    environment:
+      - OPENSEARCH_HOST=opensearch
+      - OPENSEARCH_PORT=9200
+      - OPENSEARCH_INDEX=rag-index
+    networks:
+      - opensearch-net
+
+networks:
+  opensearch-net:
