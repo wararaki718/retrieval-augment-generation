@@ -8,7 +8,7 @@ class QueryBuilder:
             "size": size,
             "query": {
                 "knn": {
-                    "rag-index": {
+                    "rag_vector": {
                         "vector": vector,
                         "k": k,
                     }
